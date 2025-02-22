@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAWZIAI</title>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-overlay" id="pageOverlay">
+        <div class="login-container" id="loginContainer">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('pageOverlay');
+            overlay.classList.add('visible');
+        });
+    </script>
+</body>
+</html>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <button class="button left-button" onclick="showFlearnAI()">LEARN </button>
+        </div>
+        <div class="right-section">
+            <button class="button right-button" onclick="showFexamAI()">EXAMINE</button>
+        </div>
+    </div>
+
+    <div id="flearnAI" class="hidden section flearnai-bg">
+        <h1 class="animated-title">📚 Welcome to FLEARNAI</h1>
+        <p>Upload PDFs and start learning.</p>
+        <select id="subjectSelect">
+            <option value="Subject 0">select a subject</option>
+            <option value="Subject 1">CALC1</option>
+            <option value="Subject 2">CALC2</option>
+            <option value="Subject 3">CALC3</option>
+        </select>
+        <input type="file" id="fileInput" accept="application/pdf">
+        <div id="fileList"></div>
+        <button class="back-button" onclick="goBack()">⬅ Back</button>
+    </div>
+
+    <div id="fexamAI" class="hidden section fexamai-bg">
+        <h1 class="animated-title">🎓 FEXAMAI - AI Exams Coming Soon</h1>
+        <button class="back-button" onclick="goBack()">⬅ Back</button>
+    </div>
+
+    <script>
+        function showFlearnAI() {
+            document.querySelector(".container").style.display = "none";
+            document.getElementById("flearnAI").style.display = "flex";
+        }
+
+        function showFexamAI() {
+            document.querySelector(".container").style.display = "none";
+            document.getElementById("fexamAI").style.display = "flex";
+        }
+
+        function goBack() {
+            document.getElementById("flearnAI").style.display = "none";
+            document.getElementById("fexamAI").style.display = "none";
+            document.querySelector(".container").style.display = "flex";
+        }
+    </script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-section, .right-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease-in-out;
+            color: white;
+            font-size: 24px;
+            position: relative;
+        }
+
+        .left-section {
+            background: linear-gradient(135deg ,rgb(0, 0, 50), #0b136e, #0016d8, #2575fc , rgb(0, 200, 255) , white  );
+            animation: liquidMove 2.1s infinite alternate ease-in-out;
+        }
+
+        .right-section {
+            background: linear-gradient(-135deg, #000000 ,rgb(80, 0, 0) , #a60000, #a60000 , red , rgb(255, 69, 69) , white);
+            animation: liquidMove 2.1s infinite alternate ease-in-out;
+        }
+
+        .button {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+            color: white;
+        }
+
+        .left-button {
+            background: #1d2671;
+        }
+
+        .right-button {
+            background: #560c0c;
+        }
+
+        .button:hover {
+            transform: scale(1.8);
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.594);
+        }
+
+        .left-button:hover {
+            background: #add8e6; /* light blue */
+            box-shadow: 0 0 10px 3px rgba(173, 216, 230, 0.8); /* Neon blue glow */
+        }
+
+        .right-button:hover {
+            background: #ff0000; /* brick red */
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.8); /* Neon black glow */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .flearnai-bg {
+            background: linear-gradient(45deg, #69dfff, #0049a2);
+            animation: liquidMove 2.1s infinite alternate ease-in-out;
+        }
+
+        .fexamai-bg {
+            background: linear-gradient(45deg, #ff1500, #000000);
+            animation: liquidMove 2.1s infinite alternate ease-in-out;
+        }
+
+        @keyframes liquidMove {
+            0% {
+                background-size: 100% 100%;
+            }
+            50% {
+                background-size: 110% 110%;
+            }
+            65% {
+                background-size: 120% 120%;
+            }
+            100% {
+                background-size: 100% 100%;
+            }
+        }
+
+        .animated-title {
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Particle animation */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 0, 255, 0.8); /* Light blue */
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: float 1s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            50% {
+                transform: translate3d(50px, -50px, 0);
+            }
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        /* Create a set number of particles */
+        .particles .particle:nth-child(odd) {
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+        .particles .particle:nth-child(even) {
+            animation-duration: 12s;
+            animation-delay: 4s;
+        }
+    </style>
+
+    <!-- Particle container -->
+    <div class="particles">
+        <div class="particle" style="width: 15px; height: 15px; animation-duration: 1s;"></div>
+        <div class="particle" style="width: 10px; height: 10px; animation-duration: 3s;"></div>
+        <div class="particle" style="width: 20px; height: 20px; animation-duration: 10s;"></div>
+        <div class="particle" style="width: 18px; height: 18px; animation-duration: 11s;"></div>
+        <div class="particle" style="width: 14px; height: 14px; animation-duration: 12s;"></div>
+    </div>
+
+</body>
+</html>
