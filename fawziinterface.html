@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            background: linear-gradient(135deg, #ff00ff, #ff0000);
         }
 
         .login-box {
@@ -88,7 +88,60 @@
             <button class="button right-button" onclick="showFexamAI()">EXAMINE</button>
         </div>
     </div>
+    <div id="uniLogin" class="hidden section uni-login-bg">
+        <h2 class="animated-title">Select Your University</h2>
+        <div class="uni-buttons">
+            <button class="uni-button" onclick="selectUni('UNI1')">HTU</button>
+            <button class="uni-button" onclick="selectUni('UNI2')">GJU</button>
+            <button class="uni-button" onclick="selectUni('UNI3')">HU</button>
+            <button class="uni-button" onclick="selectUni('UNI4')">PSUT</button>
+            <button class="uni-button" onclick="selectUni('UNI5')">JU</button>
+        </div>
+        <button class="back-button" onclick="goBack()">⬅ Back</button>
+    </div>
 
+    <script>
+        function showFlearnAI() {
+            document.querySelector(".container").style.display = "none";
+            document.getElementById("uniLogin").style.display = "flex";
+        }
+
+        function selectUni(uni) {
+            alert(`You selected ${uni}`);
+            document.getElementById("uniLogin").style.display = "none";
+            document.getElementById("flearnAI").style.display = "flex";
+        }
+    </script>
+
+    <style>
+        .uni-login-bg {
+            background: linear-gradient(45deg, #00ffee, #d400ff);
+            animation: liquidMove 1.1s infinite alternate ease-in-out;
+        }
+
+        .uni-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .uni-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: conic-gradient(#ffffff, #00d5ff, #ffffff);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .uni-button:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px 3px rgba(255, 174, 174, 0.8);
+        }
+    </style>
     <div id="flearnAI" class="hidden section flearnai-bg">
         <h1 class="animated-title">📚 Welcome to FLEARNAI</h1>
         <p>Upload PDFs and start learning.</p>
