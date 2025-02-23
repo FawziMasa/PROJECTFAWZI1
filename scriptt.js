@@ -2,7 +2,6 @@ function showFlearnAI() {
     document.querySelector(".container").style.display = "none";
     document.getElementById("flearnAI").style.display = "flex";
 }
-
 function showFexamAI() {
     document.querySelector(".container").style.display = "none";
     document.getElementById("fexamAI").style.display = "flex";

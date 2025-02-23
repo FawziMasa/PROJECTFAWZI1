@@ -4,41 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAWZIAI</title>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        }
+
+        .login-box {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            text-align: center;
+            color: white;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #ffffff;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-box button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.8);
+        }
+    </style>
 </head>
+
 <body>
-    <div class="page-overlay" id="pageOverlay">
-        <div class="login-container" id="loginContainer">
-            <h2>Login</h2>
-            <form action="/login" method="post">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>FAWZ1-P0RTAL</h2>
+            <input type="text" placeholder="Username" id="username">
+            <input type="password" placeholder="Password" id="password">
+            <button onclick="login()">Login</button>
         </div>
     </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const overlay = document.getElementById('pageOverlay');
-            overlay.classList.add('visible');
-        });
+        function login() {
+            // Simple login validation
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === 'password') {
+                document.querySelector('.login-container').style.display = 'none';
+                document.querySelector('.container').style.filter = 'none';
+            } else {
+                alert('Invalid credentials');
+            }
+        }
+
+        // Initially blur the sections
+        document.querySelector('.container').style.filter = 'blur(5px)';
     </script>
-</body>
-</html>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
     <div class="container">
         <div class="left-section">
             <button class="button left-button" onclick="showFlearnAI()">LEARN </button>
@@ -51,11 +92,13 @@
     <div id="flearnAI" class="hidden section flearnai-bg">
         <h1 class="animated-title">📚 Welcome to FLEARNAI</h1>
         <p>Upload PDFs and start learning.</p>
-        <select id="subjectSelect">
-            <option value="Subject 0">select a subject</option>
-            <option value="Subject 1">CALC1</option>
-            <option value="Subject 2">CALC2</option>
-            <option value="Subject 3">CALC3</option>
+      <div class="subject-buttons">
+    <button class="subject-button" onclick="showOptions('GERMAN')">GERMAN</button>
+    <button class="subject-button" onclick="showOptions('CALC')">CALC</button>
+    <button class="subject-button" onclick="showOptions('OOP')">OOP</button>
+    <button class="subject-button" onclick="showOptions('CS116')">CS116</button>
+</div>
+
         </select>
         <input type="file" id="fileInput" accept="application/pdf">
         <div id="fileList"></div>
@@ -63,7 +106,7 @@
     </div>
 
     <div id="fexamAI" class="hidden section fexamai-bg">
-        <h1 class="animated-title">🎓 FEXAMAI - AI Exams Coming Soon</h1>
+        <h2 class="animated-title">🎓 FEXAMAI - AI Exams Coming Soon</h2>
         <button class="back-button" onclick="goBack()">⬅ Back</button>
     </div>
 
@@ -86,6 +129,7 @@
     </script>
 
     <style>
+
         body, html {
             margin: 0;
             padding: 0;
@@ -194,8 +238,8 @@
         }
 
         .animated-title {
-            font-size: 3rem;
-            animation: fadeIn 2s ease-in-out;
+            font-size: 2.5rem;
+            animation: fadeIn 2.5s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -212,8 +256,8 @@
         /* Particle animation */
         .particles {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -50px;
+            left: -100px;
             width: 100%;
             height: 100%;
             pointer-events: none;
@@ -242,12 +286,92 @@
 
         /* Create a set number of particles */
         .particles .particle:nth-child(odd) {
-            animation-duration: 10s;
+            animation-duration: 1s;
             animation-delay: 2s;
         }
         .particles .particle:nth-child(even) {
-            animation-duration: 12s;
+            animation-duration: 4s;
             animation-delay: 4s;
+        }
+    </style>
+     <style>
+
+        .subject-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .subject-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: conic-gradient(#ffffff , rgb(0, 174, 255) , rgb(255, 255, 255));
+            color: white;
+            font-size: 8px;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .subject-button:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px 3px rgba(188, 218, 255, 0.8);
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: conic-gradient(from 180deg at 50% 50%, #000000, blue , rgb(0, 145, 255), #ffffff,rgb(255, 41, 41), #ff0000 , black);
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .login-box {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 12px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background:  white,
+            color: rgb(255, 0, 0);
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-box button:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 10px 3px radial-gradient(rgba(240, 0, 0, 0.863) , rgba(23, 12, 177, 0.8));
         }
     </style>
 
@@ -256,9 +380,10 @@
         <div class="particle" style="width: 15px; height: 15px; animation-duration: 1s;"></div>
         <div class="particle" style="width: 10px; height: 10px; animation-duration: 3s;"></div>
         <div class="particle" style="width: 20px; height: 20px; animation-duration: 10s;"></div>
-        <div class="particle" style="width: 18px; height: 18px; animation-duration: 11s;"></div>
+        <div class="particle" style="width: 10px; height: 18px; animation-duration: 11s;"></div>
         <div class="particle" style="width: 14px; height: 14px; animation-duration: 12s;"></div>
     </div>
 
+    
 </body>
 </html>
